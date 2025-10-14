@@ -1,15 +1,19 @@
-
 class Project {
-    constructor (name) {
+    constructor (name, description) {
         this.name = name;
-    };
+        this.description = description;
+        this.todos = []
+    }
+    
 }
 
 let projects = []
 
-function createNewProject (name) {
-    let newProject = new Project (name);
-     projects.push(newProject); 
+function createProject (name, description) {
+    const newProject = new Project (name, description);
+    projects.push(newProject);
+    return newProject;
+
 }
 
-export {createNewProject, projects}
+export {createProject, projects}

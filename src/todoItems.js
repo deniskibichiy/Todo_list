@@ -6,6 +6,15 @@ class TodoItems {
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
+        this.isDone = false;
+    }
+    toggleFinishStatus () {
+        if (this.isDone == false) {
+            this.isDone = true;
+        }
+        else {
+            this.isDone = false;
+        }
     }
 }
 const items = []

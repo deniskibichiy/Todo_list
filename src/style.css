@@ -3,6 +3,13 @@
     --secondary-color: #234C6A;
     --third-color: #456882;
     --fourth-color: #D2C1B6;
+    --white: #fff;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -34,19 +41,47 @@ body {
     font-weight: bold;
     color: var(--fourth-color);
     cursor: pointer;
+    text-transform: capitalize;
 }
 
 #container {
     background-color:#f8f8f8 ;
+    padding-left: 10px;
+    padding-top: 20px;
 }
 
 .all-projects {
     display: flex;
     flex-direction: column;
     margin-left: 20px;
+    
 }
 
 .all-projects a {
     color: white;
     font-size: 20px;
+    
+}
+
+h1, h2, h3 {
+    color: var(--primary-color);
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+.itemDiv {
+    border-radius: 10px;
+    background-color: var(--fourth-color);
+    padding: 10px;
+    margin: 20px;
+    box-shadow: 3px 3px 3px var(--primary-color);
 }

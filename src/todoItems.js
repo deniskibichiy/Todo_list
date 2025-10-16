@@ -1,5 +1,5 @@
 import { projects } from "./projects";
-class TodoItems {
+class TodoItem {
     constructor (title, description, dueDate, priority) {
         this.id = crypto.randomUUID();
         this.title = title;
@@ -20,7 +20,7 @@ class TodoItems {
 const items = []
 
 function createItem (title, description, dueDate, priority) {
-    let newItem = new TodoItems(title, description, dueDate, priority);
+    let newItem = new TodoItem(title, description, dueDate, priority);
     items.push(newItem);
     return newItem;
 };

@@ -1,0 +1,52 @@
+:root {
+    --primary-color: #1B3C53;
+    --secondary-color: #234C6A;
+    --third-color: #456882;
+    --fourth-color: #D2C1B6;
+}
+
+body {
+    font-size: 18px;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+#nav {
+    padding-top: 10px;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: var(--primary-color);
+    height: 100vh;
+}
+
+#nav button {
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    background: none;
+    text-align: left;
+    font-weight: bold;
+    color: var(--fourth-color);
+    cursor: pointer;
+}
+
+#container {
+    background-color:#f8f8f8 ;
+}
+
+.all-projects {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.all-projects a {
+    color: white;
+    font-size: 20px;
+}

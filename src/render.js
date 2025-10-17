@@ -34,9 +34,13 @@ function renderAllItems (arr) {
 }
 
 
-function hideClass () {
-    const container = document.querySelector(".all-projects");
-    container.classList.add("hidden")
+function toggle (el, className) {
+    if (el.classList.contains(className)) {
+        el.classList.remove(className);
+    }
+    else {
+        el.classList.add(className);
+    }
 
 }
-export {mainRender, hideClass, renderProjects, renderAllItems}
+export {mainRender, toggle, renderProjects, renderAllItems}

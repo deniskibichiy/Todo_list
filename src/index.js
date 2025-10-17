@@ -2,7 +2,7 @@ import "./style.css"
 import {createProject, projects} from "./projects";
 import { createItem, items } from "./todoItems";
 import{changePriority} from "./priority";
-import { mainRender,hideClass, renderAllItems, renderProjects } from "./render";
+import { mainRender,toggle, renderAllItems, renderProjects } from "./render";
 import { handleDialog, cancelModal } from "./dialogHandler";
 
 
@@ -12,11 +12,31 @@ const school = createProject("school work", "Projects here related to school wor
 const assignment = createItem("Linear Algebra", "Complete systems of linear equations in linear algebra", "2025-10-19", "High");
 const cleanHouse = createItem("Clean", "Get my bedroom in order", "2025 - 10 -10", "High")
 const grocerShopping = createItem ("Groceries", "purchase some groceries", "2025-12-34", "High")
-document.querySelector("#projects").addEventListener("click", e => {
 
-            renderProjects(projects)
+
+document.querySelector("#projects").addEventListener("click", () => {
+    const div = document.querySelector(".all-projects")
+    toggle(div, "hidden");
 })
 
+document.querySelector(".cancel").addEventListener("click", () => {
+    cancelModal();
+})
+
+const submitItemButton = document.querySelector(".submit");
+submitItemButton.addEventListener("click", (e) => {
+    //e.preventDefault();
+    const title = document.querySelector("#title").value;
+    const description = document.querySelector("#description").value;
+   const date = document.getElementById("date").value;
+   const dateEntered = new Date(date)
+    const priority = document.querySelector("#priority").value;
+    createItem(title, description, dateEntered, priority);
+    document.querySelector("#container").textContent = " "
+    renderAllItems(items)
+})
+
+renderProjects(projects)
 const btn = document.querySelector(".new-task");
 btn.addEventListener("click", () => {
     handleDialog()

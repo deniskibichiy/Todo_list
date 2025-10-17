@@ -15,7 +15,36 @@
     </nav>
     <div id="container">
         <h2>My Tasks</h2>
-        
+        <button class="new-task">New Task</button>
     </div>
+    <dialog class="dialog">
+        <h3>Create New Item</h3>
+        <form action=" " method="dialog" class="form">
+            <div>
+                <label for="title">Title:</label>
+                <input type="text">
+            </div>
+            <div>
+                <label for="description">Description:</label>
+                <input type="text">
+            </div>
+            <div class="priority-selection">
+                <label for="priority">Priority:</label>
+                <select name="priority" id="priority">
+                    <option value="">High</option>
+                    <option value="">Medium</option>
+                    <option value="">Low</option>
+                </select>
+            </div>
+            <div>
+                <label for="date">Due Date:</label>
+                <input type="date">
+            </div>
+            <div class="buttons">
+                <button type="submit" class="submit">Submit</button>
+                <button class="cancel">Cancel</button>
+            </div>
+        </form>
+    </dialog>
 </body>
 </html>

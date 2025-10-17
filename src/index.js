@@ -3,6 +3,7 @@ import {createProject, projects} from "./projects";
 import { createItem, items } from "./todoItems";
 import{changePriority} from "./priority";
 import { mainRender,hideClass, renderAllItems, renderProjects } from "./render";
+import { handleDialog, cancelModal } from "./dialogHandler";
 
 
 const home = createProject("home", "Projects here related to home duties");
@@ -15,6 +16,11 @@ document.querySelector("#projects").addEventListener("click", e => {
 
             renderProjects(projects)
 })
+
+const btn = document.querySelector(".new-task");
+btn.addEventListener("click", () => {
+    handleDialog()
+});
 
 mainRender()
 renderAllItems(items)

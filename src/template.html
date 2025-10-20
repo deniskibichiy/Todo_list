@@ -9,7 +9,7 @@
     <nav id="nav">
         <button id="home" >Home</button>
         <button id="projects">Projects</button>
-        <div class="all-projects"></div>
+        <div class="all-projects hidden"></div>
         <button id="all-tasks">All Tasks</button>
         <button id="new-project">New Project</button>
     </nav>
@@ -44,6 +44,22 @@
             <div class="buttons">
                 <button type="submit" class="submit">Submit</button>
                 <button class="cancel">Cancel</button>
+            </div>
+        </form>
+    </dialog>
+    <dialog class="project-dialog">
+        <form class="project-form form" action="">
+            <div>
+                <label for="project-name"> Enter Project Name</label>
+                <input id="project-name" type="text">
+            </div>
+            <div>
+                <label for="project-description">Description</label>
+                <input id="project-description" type="text">
+            </div>
+            <div class=" buttons">
+                <button type="submit" class="submit-project">Submit</button>
+                <button class="cancel-project">Cancel</button>
             </div>
         </form>
     </dialog>

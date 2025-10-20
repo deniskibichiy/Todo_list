@@ -3,7 +3,7 @@ import {createProject, projects} from "./projects";
 import { createItem, items } from "./todoItems";
 import{changePriority} from "./priority";
 import { mainRender,toggle, renderAllItems, renderProjects } from "./render";
-import { handleDialog, cancelModal } from "./dialogHandler";
+import { handleDialog, cancelModal, projectModal, projectModalCancel } from "./dialogHandler";
 
 
 const home = createProject("home", "Projects here related to home duties");
@@ -23,9 +23,40 @@ document.querySelector(".cancel").addEventListener("click", () => {
     cancelModal();
 })
 
+
+const newProject = document.querySelector("#new-project");
+newProject.addEventListener("click", () => {
+    projectModal();
+})
+
+const cancelProject = document.querySelector(".cancel-project")
+cancelProject.addEventListener("click", ()=> {
+    document.querySelector(".project-form").reset();
+    projectModalCancel();
+})
+
+const submitProject = document.querySelector(".submit-project");
+submitProject.addEventListener("click", (e)=> {
+    e.preventDefault();
+    console.log("Button Clicked")
+    console.log("Projects array before adding:", projects);
+    const name = document.querySelector("#project-name").value;
+    const description = document.querySelector("#project-description").value;
+    console.log("Creating project with:", name, description);
+
+    createProject(name, description);
+    console.log("rendering projects");
+    console.log("Projects array before rendering:", projects);
+    document.querySelector(".all-projects").textContent = ""; 
+    renderProjects(projects);
+    console.log("done")
+    projectModalCancel();
+})
+
+
 const submitItemButton = document.querySelector(".submit");
 submitItemButton.addEventListener("click", (e) => {
-    //e.preventDefault();
+    e.preventDefault();
     const title = document.querySelector("#title").value;
     const description = document.querySelector("#description").value;
    const date = document.getElementById("date").value;
@@ -33,15 +64,15 @@ submitItemButton.addEventListener("click", (e) => {
     const priority = document.querySelector("#priority").value;
     createItem(title, description, dateEntered, priority);
     document.querySelector("#container").textContent = " "
-    renderAllItems(items)
+    renderAllItems(items);
+    
 })
 
-renderProjects(projects)
+
 const btn = document.querySelector(".new-task");
 btn.addEventListener("click", () => {
     handleDialog()
 });
-
-mainRender()
+renderProjects(projects);
 renderAllItems(items)
 

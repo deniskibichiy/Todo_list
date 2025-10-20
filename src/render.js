@@ -7,7 +7,7 @@ function mainRender() {
 
 function renderProjects(arr) {
     const container = document.querySelector(".all-projects");
-    container.textContent = " ";
+    container.textContent = "";
     arr.forEach(item => {
         const btn = document.createElement("button");
         btn.textContent = `${item.name}`;
@@ -42,5 +42,11 @@ function toggle (el, className) {
         el.classList.add(className);
     }
 
+}
+
+function renderProjectItems(arr) {
+    for(key in arr) {
+        
+    }
 }
 export {mainRender, toggle, renderProjects, renderAllItems}

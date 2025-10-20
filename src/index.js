@@ -72,9 +72,16 @@ btn.addEventListener("click", () => {
 });
 
 document.addEventListener("DOMContentLoaded", ()=> {
-    renderProjectItems(projects[1])
-})
+    renderProjectItems(projects[0]);
+});
 renderProjects(projects);
+document.addEventListener("DOMContentLoaded", ()=> {
+    const allProjects = document.querySelector(".all-projects");
+    allProjects.addEventListener("click", (e) => {
+        let targetProject = projects.find(item => item.id == e.target.dataset.id);
+        renderProjectItems(targetProject);
+    })
+})
 //renderAllItems(items)
 //console.log(typeof(projects[0].todos))
 home.todos.push(cleanHouse)

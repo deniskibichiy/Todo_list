@@ -10,6 +10,7 @@ function renderProjects(arr) {
     container.textContent = "";
     arr.forEach(item => {
         const btn = document.createElement("button");
+        btn.dataset.id = item.id;
         btn.textContent = `${item.name}`;
         container.appendChild(btn);
     });

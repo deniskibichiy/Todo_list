@@ -2,7 +2,7 @@ import "./style.css"
 import {createProject, projects} from "./projects";
 import { createItem, items } from "./todoItems";
 import{changePriority} from "./priority";
-import { mainRender,toggle, renderAllItems, renderProjects } from "./render";
+import { mainRender,toggle, renderAllItems, renderProjects, renderProjectItems } from "./render";
 import { handleDialog, cancelModal, projectModal, projectModalCancel } from "./dialogHandler";
 
 
@@ -38,18 +38,14 @@ cancelProject.addEventListener("click", ()=> {
 const submitProject = document.querySelector(".submit-project");
 submitProject.addEventListener("click", (e)=> {
     e.preventDefault();
-    console.log("Button Clicked")
-    console.log("Projects array before adding:", projects);
+
     const name = document.querySelector("#project-name").value;
     const description = document.querySelector("#project-description").value;
-    console.log("Creating project with:", name, description);
 
     createProject(name, description);
-    console.log("rendering projects");
-    console.log("Projects array before rendering:", projects);
+
     document.querySelector(".all-projects").textContent = ""; 
     renderProjects(projects);
-    console.log("done")
     projectModalCancel();
 })
 
@@ -65,6 +61,7 @@ submitItemButton.addEventListener("click", (e) => {
     createItem(title, description, dateEntered, priority);
     document.querySelector("#container").textContent = " "
     renderAllItems(items);
+    cancelModal();
     
 })
 
@@ -73,6 +70,17 @@ const btn = document.querySelector(".new-task");
 btn.addEventListener("click", () => {
     handleDialog()
 });
-renderProjects(projects);
-renderAllItems(items)
 
+document.addEventListener("DOMContentLoaded", ()=> {
+    renderProjectItems(projects[1])
+})
+renderProjects(projects);
+//renderAllItems(items)
+//console.log(typeof(projects[0].todos))
+home.todos.push(cleanHouse)
+home.todos.push(grocerShopping)
+let arrayToRender1 = home.todos;
+console.log(arrayToRender1)
+
+//console.log(projects[0].todos)
+//console.log(projects[0].todos[0])

@@ -19,9 +19,10 @@ class TodoItem {
 }
 const items = []
 
-function createItem (title, description, dueDate, priority) {
+function createItem (title, description, dueDate, priority, project) {
     let newItem = new TodoItem(title, description, dueDate, priority);
     items.push(newItem);
+    project.todos.push(newItem);
     return newItem;
 };
 

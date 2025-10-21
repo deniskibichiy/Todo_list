@@ -9,9 +9,9 @@ import { handleDialog, cancelModal, projectModal, projectModalCancel } from "./d
 const home = createProject("home", "Projects here related to home duties");
 const shopping = createProject("shopping", "going for some shopping");
 const school = createProject("school work", "Projects here related to school work");
-const assignment = createItem("Linear Algebra", "Complete systems of linear equations in linear algebra", "2025-10-19", "High");
-const cleanHouse = createItem("Clean", "Get my bedroom in order", "2025 - 10 -10", "High")
-const grocerShopping = createItem ("Groceries", "purchase some groceries", "2025-12-34", "High")
+const assignment = createItem("Linear Algebra", "Complete systems of linear equations in linear algebra", "2025-10-19", "High", school);
+const cleanHouse = createItem("Clean", "Get my bedroom in order", "2025 - 10 -10", "High", home)
+const grocerShopping = createItem ("Groceries", "purchase some groceries", "2025-12-34", "High", shopping)
 
 
 document.querySelector("#projects").addEventListener("click", () => {
@@ -39,7 +39,7 @@ const submitProject = document.querySelector(".submit-project");
 submitProject.addEventListener("click", (e)=> {
     e.preventDefault();
 
-    const name = document.querySelector("#project-name").value;
+    const name = document.querySelector("#project-name").value.toLowerCase();
     const description = document.querySelector("#project-description").value;
 
     createProject(name, description);
@@ -53,27 +53,34 @@ submitProject.addEventListener("click", (e)=> {
 const submitItemButton = document.querySelector(".submit");
 submitItemButton.addEventListener("click", (e) => {
     e.preventDefault();
-    const title = document.querySelector("#title").value;
+    const projectHeading = document.querySelector(".project-heading").textContent.toLowerCase();
+    const currentProject =   projects.find(item => item.name === projectHeading) || projects.find(item => item.name === "home");
+    const title = document.querySelector("#title").value.toLowerCase();
     const description = document.querySelector("#description").value;
    const date = document.getElementById("date").value;
    const dateEntered = new Date(date)
     const priority = document.querySelector("#priority").value;
-    createItem(title, description, dateEntered, priority);
-    document.querySelector("#container").textContent = " "
-    renderAllItems(items);
+    createItem(title, description, dateEntered, priority, currentProject);
+    renderProjectItems(currentProject);
     cancelModal();
     
 })
 
 
-const btn = document.querySelector(".new-task");
-btn.addEventListener("click", () => {
-    handleDialog()
-});
+
+document.addEventListener("DOMContentLoaded", ()=> {
+    const container = document.querySelector("#container")
+    container.addEventListener("click", (e) => {
+    if (e.target.classList.contains("new-task")) {
+         handleDialog()
+    }
+})
+})
 
 document.addEventListener("DOMContentLoaded", ()=> {
     renderProjectItems(projects[0]);
 });
+
 renderProjects(projects);
 document.addEventListener("DOMContentLoaded", ()=> {
     const allProjects = document.querySelector(".all-projects");
@@ -92,11 +99,3 @@ document.addEventListener("DOMContentLoaded", ()=> {
 
 
 
-//console.log(typeof(projects[0].todos))
-home.todos.push(cleanHouse)
-home.todos.push(grocerShopping)
-let arrayToRender1 = home.todos;
-console.log(arrayToRender1)
-
-//console.log(projects[0].todos)
-//console.log(projects[0].todos[0])

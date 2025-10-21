@@ -18,10 +18,15 @@ function renderProjects(arr) {
 
 function renderAllItems (arr) {
     const container = document.querySelector("#container");
-    const heading = document.querySelector(".project-heading");
-    heading.textContent = "All Tasks"
     container.innerHTML = "";
+    const heading = document.createElement("h2")
+    heading.classList.add("project-heading");
+    heading.textContent = "All Tasks";
+    const newTask = document.createElement("button");
+    newTask.textContent = "New Task";
+    newTask.classList.add("new-task");
     container.appendChild(heading);
+    container.appendChild(newTask)
     arr.forEach(item => {
         const itemDiv = document.createElement("div");
         itemDiv.classList.add("itemDiv")
@@ -51,11 +56,16 @@ function toggle (el, className) {
 
 function renderProjectItems (obj) {
         let arrayToRender = obj.todos;
-        const heading = document.querySelector(".project-heading");
-        heading.textContent = `${obj.name}`
         const container = document.querySelector("#container");
         container.innerHTML="";
+        const heading = document.createElement("h2")
+        heading.classList.add("project-heading");
+        heading.textContent = `${obj.name}`
+        const newTask = document.createElement("button");
+        newTask.textContent = "New Task";
+        newTask.classList.add("new-task");
         container.appendChild(heading)
+        container.appendChild(newTask);
         arrayToRender.forEach(item => {
         const itemDiv = document.createElement("div");
         itemDiv.classList.add("itemDiv")

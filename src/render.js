@@ -1,18 +1,30 @@
 
-
+import deleteImage from "./delete.png"
 function mainRender() {
     const container = document.querySelector("#container");
     const taskDiv = document.createElement("div");
 }
 
+
 function renderProjects(arr) {
     const container = document.querySelector(".all-projects");
     container.innerHTML = "";
     arr.forEach(item => {
+        const projectDiv = document.createElement("div");
+        projectDiv.classList.add("project-div")
+        const itemDiv = document.createElement("div");
+        const deleteDiv = document.createElement("div");
         const btn = document.createElement("button");
         btn.dataset.id = item.id;
+        const deleteIcon = document.createElement("img");
+        deleteIcon.classList.add("delete-icon")
+        deleteIcon.src = deleteImage;
+        deleteDiv.appendChild(deleteIcon);
         btn.textContent = `${item.name}`;
-        container.appendChild(btn);
+        itemDiv.appendChild(btn);
+        projectDiv.appendChild(itemDiv);
+        projectDiv.appendChild(deleteDiv);
+        container.appendChild(projectDiv)
     });
 }
 
@@ -36,10 +48,16 @@ function renderAllItems (arr) {
         description.textContent = `${item.description}`;
         const due = document.createElement("p");
         due.textContent = `Due: ${item.dueDate}`
+        const deleteButton = document.createElement("button");
+        deleteButton.classList.add("delete");
+        deleteButton.dataset.id = `${item.id}`
+        deleteButton.textContent = "Delete Item";
         itemDiv.appendChild(itemHeading);
         itemDiv.appendChild(description);
         itemDiv.appendChild(due);
+        itemDiv.appendChild(deleteButton);
         container.appendChild(itemDiv);
+        
     })
 }
 
@@ -75,9 +93,14 @@ function renderProjectItems (obj) {
         description.textContent = `${item.description}`;
         const due = document.createElement("p");
         due.textContent = `Due: ${item.dueDate}`
+        const deleteButton = document.createElement("button");
+        deleteButton.classList.add("delete");
+        deleteButton.dataset.id = `${item.id}`
+        deleteButton.textContent = "Delete Item";
         itemDiv.appendChild(itemHeading);
         itemDiv.appendChild(description);
         itemDiv.appendChild(due);
+        itemDiv.appendChild(deleteButton);
         container.appendChild(itemDiv);
     })
 }

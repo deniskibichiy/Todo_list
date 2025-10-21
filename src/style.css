@@ -32,7 +32,8 @@ body {
 }
 
 #nav button,
-.new-task {
+.new-task,
+.delete {
     font-size: 18px;
     border: none;
     border-radius: 10px;
@@ -155,4 +156,19 @@ form input {
 
 .project-heading {
     text-transform: capitalize;
+}
+
+.delete {
+    color: var(--primary-color);
+}
+
+.project-div {
+    display: flex;
+    font-size: 20px;
+    text-align: left;
+    gap: 20px;
+    align-items: center;
+}
+.project-div img {
+    height: 20px;
 }

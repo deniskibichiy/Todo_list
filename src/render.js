@@ -7,7 +7,7 @@ function mainRender() {
 
 function renderProjects(arr) {
     const container = document.querySelector(".all-projects");
-    container.textContent = "";
+    container.innerHTML = "";
     arr.forEach(item => {
         const btn = document.createElement("button");
         btn.dataset.id = item.id;
@@ -18,6 +18,10 @@ function renderProjects(arr) {
 
 function renderAllItems (arr) {
     const container = document.querySelector("#container");
+    const heading = document.querySelector(".project-heading");
+    heading.textContent = "All Tasks"
+    container.innerHTML = "";
+    container.appendChild(heading);
     arr.forEach(item => {
         const itemDiv = document.createElement("div");
         itemDiv.classList.add("itemDiv")
@@ -50,7 +54,7 @@ function renderProjectItems (obj) {
         const heading = document.querySelector(".project-heading");
         heading.textContent = `${obj.name}`
         const container = document.querySelector("#container");
-        container.textContent="";
+        container.innerHTML="";
         container.appendChild(heading)
         arrayToRender.forEach(item => {
         const itemDiv = document.createElement("div");

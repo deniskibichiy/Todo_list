@@ -82,7 +82,16 @@ document.addEventListener("DOMContentLoaded", ()=> {
         renderProjectItems(targetProject);
     })
 })
-//renderAllItems(items)
+
+document.addEventListener("DOMContentLoaded", ()=> {
+    const allTasks = document.querySelector("#all-tasks");
+    allTasks.addEventListener("click", ()=> {
+        renderAllItems(items);
+    })
+})
+
+
+
 //console.log(typeof(projects[0].todos))
 home.todos.push(cleanHouse)
 home.todos.push(grocerShopping)

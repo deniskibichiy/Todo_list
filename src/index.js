@@ -121,6 +121,13 @@ document.addEventListener("DOMContentLoaded", ()=> {
     })
 })
 
+const nav = document.querySelector("#nav");
+nav.addEventListener("click", e => {
+    if(e.target.classList.contains("home")) {
+        renderProjectItems(home);
+    }
+})
+
 document.addEventListener("DOMContentLoaded", ()=> {
     const allTasks = document.querySelector("#all-tasks");
     allTasks.addEventListener("click", ()=> {
@@ -131,6 +138,9 @@ document.addEventListener("DOMContentLoaded", ()=> {
 document.addEventListener("DOMContentLoaded", ()=> {
     const container = document.querySelector("#container");
     container.addEventListener("click", (e) => {
+        if (e.target.classList.contains("home")) {
+            renderProjectItems(items);
+        }
         if (e.target.classList.contains("delete")) {
              const idOfTargetItem = e.target.dataset.id;
             let indexToDelete = items.findIndex(item => item.id === idOfTargetItem);
@@ -153,6 +163,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
                 if (indexInItems || indexInItems == 0) {
                     items.splice(indexInItems, 1)
             }
+            console.log(items)
             renderProjectItems(itemsProject);
             }
         }

@@ -95,15 +95,14 @@ document.addEventListener("DOMContentLoaded", ()=> {
             let targetProjectIndex = projects.findIndex
             (item => item.id === e.target.dataset.id);
             if (targetProjectIndex === 0 || targetProjectIndex === -1) {
+                alert("Delete operation not allowed on default project")
                 return;
             }
             else {
                 deleteTargetProject = projects.find(item => item.id === idOfTargetProject);
                 projects.splice(targetProjectIndex, 1);
+                renderAllItems(items)
             }
-            console.log(e.target.dataset.id)
-            console.log(projects)
-            console.log(deleteTargetProject);
             if (!deleteTargetProject) {
                 console.log("returning after failing to find project")
                 renderProjects(projects);
@@ -114,13 +113,11 @@ document.addEventListener("DOMContentLoaded", ()=> {
                 itemsToDelete.forEach(item => {
                 let itemIndex = items.indexOf(item);
                 items.splice(itemIndex,1);
+                renderAllItems(items);
             });
             }
-
             renderProjects(projects);
-            
         }
-
     })
 })
 
@@ -131,10 +128,36 @@ document.addEventListener("DOMContentLoaded", ()=> {
     })
 })
 
-console.log(typeof(projects))
-console.log(typeof(projects))
-console.log(typeof(items))
-console.log(items)
+document.addEventListener("DOMContentLoaded", ()=> {
+    const container = document.querySelector("#container");
+    container.addEventListener("click", (e) => {
+        if (e.target.classList.contains("delete")) {
+             const idOfTargetItem = e.target.dataset.id;
+            let indexToDelete = items.findIndex(item => item.id === idOfTargetItem);
+            let activeProject = document.querySelector(".project-heading");
+            let activeProjectId = activeProject.dataset.id;
+            if (!activeProjectId) {
+                const indexInItems = items.findIndex(item => {
+                    item.id == idOfTargetItem;
+                });
+            if (indexInItems || indexInItems == 0) {
+                items.splice(indexInItems, 1)
+                renderAllItems(items)
+            }
+            }
+            if ( activeProjectId) {
+                let itemsProject = projects.find(item => item.id === activeProjectId);
+                const indexInObject = itemsProject.todos.findIndex(item => item.id === idOfTargetItem);
+                itemsProject.todos.splice(indexInObject,1);
+                const indexInItems = items.findIndex(item => item.id == idOfTargetItem)
+                if (indexInItems || indexInItems == 0) {
+                    items.splice(indexInItems, 1)
+            }
+            renderProjectItems(itemsProject);
+            }
+        }
+    })
+})
 
 
 

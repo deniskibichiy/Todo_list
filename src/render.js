@@ -81,11 +81,17 @@ function renderProjectItems (obj) {
         const heading = document.createElement("h2")
         heading.classList.add("project-heading");
         heading.textContent = `${obj.name}`
+        heading.dataset.id = `${obj.id}`
         const newTask = document.createElement("button");
         newTask.textContent = "New Task";
         newTask.classList.add("new-task");
         container.appendChild(heading)
         container.appendChild(newTask);
+        if (arrayToRender.length == 0){
+            const emptyArray = document.createElement("p");
+            emptyArray.textContent = "No tasks here yet. Add some tasks to display";
+            container.appendChild(emptyArray);
+        }
         arrayToRender.forEach(item => {
         const itemDiv = document.createElement("div");
         itemDiv.classList.add("itemDiv")

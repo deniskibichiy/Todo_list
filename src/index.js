@@ -90,16 +90,22 @@ document.addEventListener("DOMContentLoaded", ()=> {
         renderProjectItems(targetProject);
         }
         if (e.target.classList.contains("delete-icon")) {
+            let idOfTargetProject = e.target.dataset.id;
+            let deleteTargetProject
             let targetProjectIndex = projects.findIndex
             (item => item.id === e.target.dataset.id);
             if (targetProjectIndex === 0 || targetProjectIndex === -1) {
                 return;
             }
             else {
+                deleteTargetProject = projects.find(item => item.id === idOfTargetProject);
                 projects.splice(targetProjectIndex, 1);
             }
-            let deleteTargetProject = projects.find(item => item.id === e.target.dataset.id);
+            console.log(e.target.dataset.id)
+            console.log(projects)
+            console.log(deleteTargetProject);
             if (!deleteTargetProject) {
+                console.log("returning after failing to find project")
                 renderProjects(projects);
                 return
             }

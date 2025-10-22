@@ -85,8 +85,36 @@ renderProjects(projects);
 document.addEventListener("DOMContentLoaded", ()=> {
     const allProjects = document.querySelector(".all-projects");
     allProjects.addEventListener("click", (e) => {
+        if(e.target.classList.contains("project")) {
         let targetProject = projects.find(item => item.id == e.target.dataset.id);
         renderProjectItems(targetProject);
+        }
+        if (e.target.classList.contains("delete-icon")) {
+            let targetProjectIndex = projects.findIndex
+            (item => item.id === e.target.dataset.id);
+            if (targetProjectIndex === 0 || targetProjectIndex === -1) {
+                return;
+            }
+            else {
+                projects.splice(targetProjectIndex, 1);
+            }
+            let deleteTargetProject = projects.find(item => item.id === e.target.dataset.id);
+            if (!deleteTargetProject) {
+                renderProjects(projects);
+                return
+            }
+            else {
+                const itemsToDelete = deleteTargetProject.todos;
+                itemsToDelete.forEach(item => {
+                let itemIndex = items.indexOf(item);
+                items.splice(itemIndex,1);
+            });
+            }
+
+            renderProjects(projects);
+            
+        }
+
     })
 })
 
@@ -96,6 +124,11 @@ document.addEventListener("DOMContentLoaded", ()=> {
         renderAllItems(items);
     })
 })
+
+console.log(typeof(projects))
+console.log(typeof(projects))
+console.log(typeof(items))
+console.log(items)
 
 
 

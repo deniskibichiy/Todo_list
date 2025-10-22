@@ -19,8 +19,10 @@ function renderProjects(arr) {
         const deleteIcon = document.createElement("img");
         deleteIcon.classList.add("delete-icon")
         deleteIcon.src = deleteImage;
+        deleteIcon.dataset.id = item.id;
         deleteDiv.appendChild(deleteIcon);
         btn.textContent = `${item.name}`;
+        btn.classList.add("project")
         itemDiv.appendChild(btn);
         projectDiv.appendChild(itemDiv);
         projectDiv.appendChild(deleteDiv);

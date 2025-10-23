@@ -10,6 +10,7 @@ function renderProjects(arr) {
     const container = document.querySelector(".all-projects");
     container.innerHTML = "";
     arr.forEach(item => {
+
         const projectDiv = document.createElement("div");
         projectDiv.classList.add("project-div")
         const itemDiv = document.createElement("div");

@@ -1,10 +1,10 @@
 import "./style.css"
-import {createProject, projects} from "./projects";
-import { createItem, items } from "./todoItems";
+import {createProject , projects} from "./projects";
+import { createItem, items} from "./todoItems";
 import{changePriority} from "./priority";
 import { mainRender,toggle, renderAllItems, renderProjects, renderProjectItems } from "./render";
 import { handleDialog, cancelModal, projectModal, projectModalCancel } from "./dialogHandler";
-
+import {localStorageHandler, currentItems, currentProjects} from "./localStorage";
 
 const home = createProject("home", "Projects here related to home duties");
 const shopping = createProject("shopping", "going for some shopping");
@@ -47,6 +47,7 @@ submitProject.addEventListener("click", (e)=> {
     document.querySelector(".all-projects").textContent = ""; 
     renderProjects(projects);
     projectModalCancel();
+   
 })
 
 
@@ -113,10 +114,11 @@ document.addEventListener("DOMContentLoaded", ()=> {
                 itemsToDelete.forEach(item => {
                 let itemIndex = items.indexOf(item);
                 items.splice(itemIndex,1);
-                renderAllItems(items);
             });
             }
             renderProjects(projects);
+
+            
         }
     })
 })
@@ -163,12 +165,12 @@ document.addEventListener("DOMContentLoaded", ()=> {
                 if (indexInItems || indexInItems == 0) {
                     items.splice(indexInItems, 1)
             }
-            console.log(items)
             renderProjectItems(itemsProject);
+
+            
             }
         }
     })
 })
-
 
 

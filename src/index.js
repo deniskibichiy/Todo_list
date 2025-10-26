@@ -149,9 +149,8 @@ document.addEventListener("DOMContentLoaded", ()=> {
             let activeProject = document.querySelector(".project-heading");
             let activeProjectId = activeProject.dataset.id;
             if (!activeProjectId) {
-                const indexInItems = items.findIndex(item => {
-                    item.id == idOfTargetItem;
-                });
+                const indexInItems = items.findIndex(item => item.id == idOfTargetItem
+                );
             if (indexInItems || indexInItems == 0) {
                 items.splice(indexInItems, 1)
                 renderAllItems(items)

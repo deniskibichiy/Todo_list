@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
             if (!activeProjectId) {
                 const indexInItems = items.findIndex(item => item.id == idOfTargetItem
                 );
-            if (indexInItems || indexInItems == 0) {
+            if  (indexInItems !== -1) {
                 items.splice(indexInItems, 1)
                 renderAllItems(items)
             }
